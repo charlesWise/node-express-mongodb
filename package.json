@@ -1,0 +1,27 @@
+{
+  "name": "express-mongodb",
+  "version": "1.0.0",
+  "description": "```\r body-parser 解析post请求的数据\r cookies 读写cookies\r markdown语法解析生成模块\r mongoose 操作mongodb数据库\r swig 模块解析引擎...\r ```",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlesWise/node-express-mongodb.git"
+  },
+  "author": "chenrunsheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charlesWise/node-express-mongodb/issues"
+  },
+  "homepage": "https://github.com/charlesWise/node-express-mongodb#readme",
+  "devDependencies": {
+    "body-parser": "^1.18.2",
+    "cookies": "^0.7.1",
+    "express": "^4.16.3",
+    "markdown": "^0.5.0",
+    "mongoose": "^5.0.11",
+    "swig": "^1.4.2"
+  }
+}
