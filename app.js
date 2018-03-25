@@ -19,7 +19,14 @@ app.set('view engine', 'html');
 //在开发过程中，需要取消模板缓存
 swig.setDefaults({cache: false});
 
-app.get('/', function(req, res, next) {
+/**
+ * 根据不同的功能划分模块
+ */
+app.use('/admin', require('./routers/admin'));
+app.use('/api', require('./routers/api'));
+app.use('/', require('./routers/main'));
+
+// app.get('/', function(req, res, next) {
     // res.send('<h1>欢迎来到我的地盘</h1>');
 
     /**
@@ -27,7 +34,7 @@ app.get('/', function(req, res, next) {
      * 第一个参数，表示模板的文件，相对于views目录 view/index.html
      * 第二个参数，传递给模板使用的数据
      */
-    res.render('index');
-})
+//     res.render('index');
+// })
 
 app.listen(8080);
