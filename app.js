@@ -3,6 +3,7 @@
  */
 var express = require('express');
 var swig = require('swig'); //加载模板引擎
+var mongoose = require('mongoose'); //加载数据库模块
 
 var app = express();
 
@@ -37,4 +38,5 @@ app.use('/', require('./routers/main'));
 //     res.render('index');
 // })
 
+mongoose.connect();
 app.listen(8080);
