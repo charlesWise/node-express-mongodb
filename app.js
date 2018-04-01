@@ -4,7 +4,7 @@
 var express = require('express');
 var swig = require('swig'); //加载模板引擎
 var mongoose = require('mongoose'); //加载数据库模块
-
+var bodyParser = require('body-parser'); //加载body-parser，用来处理post提交过来的数据
 var app = express();
 
 //设置静态文件托管
@@ -19,6 +19,9 @@ app.set('views', './views');
 app.set('view engine', 'html');
 //在开发过程中，需要取消模板缓存
 swig.setDefaults({ cache: false });
+
+// bodyParser中间键设置，这样就可以在post请求的接口req上增加一个body属性对象（即为前端提交过来的数据）
+app.use(bodyParser.urlencoded({extended: true}));
 
 /**
  * 根据不同的功能划分模块
