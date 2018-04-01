@@ -5,9 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>express-mongodb</title>
-    <link rel="stylesheet" type="text/css" href="/public/main.css" />
+    <link rel="stylesheet" type="text/css" href="/public/css/main.css" />
+    <script src="/public/js/jquery.min.js"></script>
+    <script src="/public/js/index.js"></script>
 </head>
 <body>
-    <h1>hello express-mongodb !</h1>
+    <div class="bolg-container">
+        <form id="loginBox">
+            <label>
+                <span>用户名：</span>
+                <input type="text" name="username" placeholder="请输入用户名" />
+            </label>
+            <label>
+                <span>密码：</span>
+                <input type="password" name="password" placeholder="请输入密码" />
+            </label>
+            <label>
+                <input type="button" name="button" value="登录" />
+            </label>
+        </form>
+
+        <form id="regBox">
+            <label>
+                <span>用户名：</span>
+                <input type="text" name="username" placeholder="请输入用户名" />
+            </label>
+            <label>
+                <span>密码：</span>
+                <input type="password" name="password" placeholder="请输入密码" />
+            </label>
+            <label>
+                <span>确认密码：</span>
+                <input type="password" name="repassword" placeholder="请输入确认密码" />
+            </label>
+            <label>
+                <input type="button" name="button" value="注册" />
+            </label>
+        </form>
+    </div>
 </body>
 </html>
