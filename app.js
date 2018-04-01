@@ -5,6 +5,7 @@ var express = require('express');
 var swig = require('swig'); //加载模板引擎
 var mongoose = require('mongoose'); //加载数据库模块
 var bodyParser = require('body-parser'); //加载body-parser，用来处理post提交过来的数据
+var Cookies = require('cookies'); //加载cookies模块
 var app = express();
 
 //设置静态文件托管
@@ -21,7 +22,24 @@ app.set('view engine', 'html');
 swig.setDefaults({ cache: false });
 
 // bodyParser中间键设置，这样就可以在post请求的接口req上增加一个body属性对象（即为前端提交过来的数据）
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// 设置cookies
+app.use(function(req, res, next) {
+    req.cookies = new Cookies(req, res);
+
+    // 解析登录用户的cookies
+    req.userInfo = {};
+    if (req.cookies.get('userInfo')) {
+        try {
+            req.userInfo = JSON.parse(req.cookies.get('userInfo'));
+        } catch (e) {
+
+        }
+    }
+
+    next();
+})
 
 /**
  * 根据不同的功能划分模块
@@ -42,10 +60,10 @@ app.use('/', require('./routers/main'));
 // })
 
 mongoose.connect('mongodb://localhost:27018/bolg', function(err) {
-	if(err) {
-		console.log('数据库连接失败！');
-	}else {
-		console.log('数据库连接成功！');
-		app.listen(8080);
-	}
+    if (err) {
+        console.log('数据库连接失败！');
+    } else {
+        console.log('数据库连接成功！');
+        app.listen(8080);
+    }
 });

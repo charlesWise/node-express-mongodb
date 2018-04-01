@@ -11,6 +11,16 @@
 </head>
 <body>
     <div class="bolg-container">
+        {% if userInfo.id %}
+        <form id="loginAfter">
+            <label>
+                <span>用户名：{{userInfo.username}}</span>
+            </label>
+            <label>
+                <input type="button" name="logout" value="退出" />
+            </label>
+        </form>
+        {% else %}
         <form id="loginBox">
             <label>
                 <span>用户名：</span>
@@ -42,6 +52,9 @@
                 <input type="button" name="button" value="注册" />
             </label>
         </form>
+        {% endif %}
+
+        <p id="regTip"></p>
     </div>
 </body>
 </html>
