@@ -14,7 +14,11 @@
         {% if userInfo.id %}
         <form id="loginAfter">
             <label>
-                <span>用户名：{{userInfo.username}}</span>
+                {% if userInfo.isAdmin %}
+                    <span>用户名：你好，欢迎管理员{{userInfo.username}}</span>
+                {% else %}
+                    <span>用户名：你好，{{userInfo.username}}</span>
+                {% endif %}
             </label>
             <label>
                 <input type="button" name="logout" value="退出" />
