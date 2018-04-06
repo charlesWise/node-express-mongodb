@@ -4,7 +4,8 @@
   "description": "```\r body-parser 解析post请求的数据\r cookies 读写cookies\r markdown语法解析生成模块\r mongoose 操作mongodb数据库\r swig 模块解析引擎...\r ```",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

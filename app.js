@@ -8,6 +8,8 @@ var bodyParser = require('body-parser'); //加载body-parser，用来处理post�
 var Cookies = require('cookies'); //加载cookies模块
 var app = express();
 
+var User = require('./models/User');
+
 //设置静态文件托管
 //当用户访问的url以/public开始，那么直接返回对应__dirname + '/public'下的文件
 app.use('/public', express.static(__dirname + '/public'));
@@ -33,11 +35,15 @@ app.use(function(req, res, next) {
     if (req.cookies.get('userInfo')) {
         try {
             req.userInfo = JSON.parse(req.cookies.get('userInfo'));
+            // 获取当前登录用户的类型，是否是管理员
+            User.findById(req.userInfo._id).then(function(userInfo) {
+                req.userInfo.isAdmin = Boolean(userInfo.isAdmin);
+            })
+            next();
         } catch (e) {
-
+            next();
         }
     }
-
     next();
 })
 
